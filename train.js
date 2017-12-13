@@ -120,3 +120,23 @@ let excludeFiveArrow=(start,end)=>
                       .length
 
 console.log(excludeFiveArrow(4,17))
+
+//=======================EXTEND (lodash/underscore library)=======================
+let john={
+  firstname: john,
+  lastname: doe
+}
+
+let jane={
+  age:34,
+  address:'Thomas Mission,8290 Grant Loop,Lakinville',
+  getfullname:function(){
+    return this.firstname+' . '+this.lastname
+  }
+}
+
+let jim={
+  increaseage:function(){
+    this.age++
+  }
+}
