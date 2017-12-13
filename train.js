@@ -123,8 +123,8 @@ console.log(excludeFiveArrow(4,17))
 
 //=======================EXTEND (lodash/underscore library)=======================
 let john={
-  firstname: john,
-  lastname: doe
+  firstname: 'john',
+  lastname: 'doe'
 }
 
 let jane={
@@ -140,3 +140,24 @@ let jim={
     this.age++
   }
 }
+
+//=======================MIMIK JQUERY OBJECT FUNCTION CONSTRUCTORS=======================
+let thePerson = function(firstname,lastname){
+  return new thePerson.fn.init(firstname,lastname)
+}
+
+thePerson.fn = thePerson.prototype ={
+  init:function(firstname,lastname){
+    this.firstname=firstname||'firstname'
+    this.lastname=lastname||'lastname'
+    this.getfullname=function(){
+      return this.firstname+' . '+this.lastname
+    }
+  }
+}
+
+let michael = thePerson('michael','wang')
+console.log(michael)
+console.log(michael.__proto__)
+console.log(michael.getfullname())
+console.log(thePerson.fn)
