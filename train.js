@@ -1,3 +1,4 @@
+//=======================FUNCTION CONSTRUCTORS vs OBJECT.CREATE=======================
 function Person(firstname,lastname){
   this.firstname=firstname||'default'
   this.lastname=lastname||'default'
