@@ -1,38 +1,59 @@
+//=======================FUNCTION CLOSURE1=======================
+let createIncrementer=()=>{
+  let i=0
+  return {
+    increment:()=>++i
+  }
+}
+
+let incrementor=createIncrementer()
+console.log(incrementor.increment())
+console.log(incrementor.increment())
+console.log(incrementor.increment())
+
+//=======================FUNCTION CLOSURE2=======================
+var buildFuncs=function(){
+  var arr=[]
+  for(var i=0;i<3;i++){
+    arr.push((function(j){
+      return function(){
+        console.log(j)
+      }
+    })(i))
+  }
+  return arr
+}
+
+var bf=buildFuncs()
+bf[0]()
+bf[1]()
+bf[2]()
+
+
 //=======================FUNCTION CONSTRUCTORS vs OBJECT.CREATE=======================
-function Person(firstname,lastname){
-  this.firstname=firstname||'default'
-  this.lastname=lastname||'default'
+let Person=function(firstname,lastname){
+  this.firstname=firstname||'firstname'
+  this.lastname=lastname||'lastname'
   this.getfullname=function(){
-    return this.firstname+' . '+this.lastname
+    return 'fullname'
   }
 }
 
 let me=new Person()
-
-console.log(me.__proto__)
-console.log(Person.prototype)
-console.log(me.getfullname())
-for(let prop in me){
-  if(me.hasOwnProperty(prop))
-  console.log(prop+': '+me[prop])
-}
-
-Person.prototype.age=0
-Person.prototype.increaseage=function(){
-  this.age++
-}
-
-me=new Person('zhen','wang')
-
-console.log(me.__proto__)
-console.log(Person.prototype)
-
-for(let prop in me){
-  if(me.hasOwnProperty(prop))
-  console.log(prop+': '+me[prop])
-}
-
 console.log(me)
+console.log(me.__proto__)
+
+let person={
+  firstname:'firstname',
+  lastname:'lastname',
+  getfullname:function(){
+    return 'fullname'
+  }
+}
+
+me=Object.create(person)
+console.log(me)
+console.log(me.__proto__)
 
 //=======================COUNT ITEMS=======================
 function countItems(arr,item){
@@ -146,7 +167,8 @@ let thePerson = function(firstname,lastname){
   return new thePerson.fn.init(firstname,lastname)
 }
 
-thePerson.fn = thePerson.prototype ={
+//define a .fn property which equals to .prototype property
+thePerson.fn = thePerson.prototype = {
   init:function(firstname,lastname){
     this.firstname=firstname||'firstname'
     this.lastname=lastname||'lastname'
@@ -158,6 +180,33 @@ thePerson.fn = thePerson.prototype ={
 
 let michael = thePerson('michael','wang')
 console.log(michael)
-console.log(michael.__proto__)
 console.log(michael.getfullname())
 console.log(thePerson.fn)
+console.log('michael\'s prototype:',michael.__proto__) //init is actually the function that invoked by 'new' keyword, so init{} would be michael's prototype
+console.log('thePerson\'s .prototype property:',thePerson.prototype) //thePerson .prototype property is the one we defined: thePerson.prototype={init:function(x,y){...}}, .prototype for every function would be start with an empty object {}.
+
+let theClass=function(x,y){
+  return new theClass.fn.init(x,y)
+}
+
+theClass.fn=theClass.prototype={
+  init:function(x,y){
+    return {
+      x:x||'default para x',
+      y:y||'default para y',
+      xplusy1:function(){
+        return this.x+' . '+this.y
+      },
+      xplusy2:function(){
+        return this.x+' / '+this.y
+      }
+    }
+  }
+}
+  
+let newObj=theClass()
+console.log(newObj.xplusy1())
+
+let newnewObj=theClass('haha','lolo')
+console.log(newnewObj.xplusy2())
+
