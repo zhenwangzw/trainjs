@@ -8,16 +8,35 @@
 </head>
 <body>
   <div>
-    <label for="usr">username:</label>
-    <input type="text" id="usr">
+    <div>
+      <label for="usr">username:</label>
+      <input type="text" id="usr">
+    </div>
+    <div>
+      <label for="psw">password:</label>
+      <input type="text" id="psw">
+    </div>
+    <div>
+      <button id="btn">click me</button>
+    </div>
   </div>
-  <div>
-    <label for="psw">password:</label>
-    <input type="text" id="psw">
+  <br>
+  <div id="logindiv">
+    <label for="firstname">firstname:</label>
+    <input type="text" id="firstname">
+    <label for="lastname">lastname:</label>
+    <input type="text" id="lastname">
+    <select name="" id="lang">
+      <option value="en">English</option>
+      <option value="cn">中文</option>
+      <option value="jp">日本语</option>
+    </select>
+    <input type="button" value="Login" id="login">
   </div>
-  <div>
-    <button id="btn">click me</button>
-  </div>
+  <h1 id="greetingmsg"></h1>
 </body>
+<!-- <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script> -->
+<script src="jquery-3.2.1.js"></script>
+<script src="jGreetr.js"></script>
 <script src="script.js"></script>
 </html>

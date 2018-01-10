@@ -9,3 +9,13 @@ function btnClick(){
   psw.style.backgroundColor='green'
   alert(usr.value+' '+psw.value)
 }
+
+$('#login').click(function(){
+  let firstname=$('#firstname').val()
+  let lastname=$('#lastname').val()
+  let lang=$('#lang').val()
+  
+  let user=G$(firstname,lastname)
+  $('#logindiv').hide()
+  user.setLang(lang).htmlGreet('#greetingmsg',true).log()
+})
