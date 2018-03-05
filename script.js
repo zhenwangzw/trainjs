@@ -10,6 +10,7 @@ function btnClick(){
   alert(usr.value+' '+psw.value)
 }
 
+//use jQuery as DOM selector
 $('#login').click(function(){
   let firstname=$('#firstname').val()
   let lastname=$('#lastname').val()
@@ -18,4 +19,9 @@ $('#login').click(function(){
   let user=G$(firstname,lastname)
   $('#logindiv').hide()
   user.setLang(lang).htmlGreet('#greetingmsg',true).log()
+})
+
+let val=window.navigator.userAgent.split(' ')
+val.forEach((item)=>{
+  console.log(item)
 })
